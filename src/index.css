@@ -51,13 +51,14 @@ button#btn-hero {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #213547;
+  background-color: #364153;
   cursor: pointer;
   transition: border-color 0.25s;
+  color: #ffffff;
 }
 
-button:hover {
-  border-color: gray;
+button#btn-hero:hover {
+  border-color: #213547;
 }
 
 button:focus,

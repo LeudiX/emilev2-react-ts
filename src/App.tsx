@@ -1,13 +1,15 @@
 import './App.css'
 
 import HeroContainer from './components/HeroContainer'
-import HeroSection from './components/HeroSection'
+import Hero from './components/Hero'
+import About from './components/About'
 
 function App() {
   return (
     <>
       <HeroContainer/>
-      <HeroSection/>
+      <Hero/>
+      <About/>
     </>
   )
 }
