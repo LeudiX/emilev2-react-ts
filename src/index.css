@@ -21,8 +21,6 @@ html.dark {
   @apply transition-colors duration-300  dark:bg-gray-900 dark:text-white;
 }
 
-
-
 :root {
   
   line-height: 1.5;
