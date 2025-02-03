@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { Bars3BottomRightIcon, XMarkIcon } from "@heroicons/react/24/outline"
 
-const Navbar: React.FC = () => {
+interface NavbarProps {
+    isDarkMode: boolean;
+  }
+
+const Navbar: React.FC<NavbarProps> = ({isDarkMode}) => {
 
     const [isOpen, setIsOpen] = useState(false);
 
@@ -15,39 +19,39 @@ const Navbar: React.FC = () => {
             <div className="md:hidden">
                 <button
                     onClick={toggleMenu}
-                    className="text-gray-800 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 focus:outline-none font-medium"
+                    className={`${isDarkMode ? "text-white" : "text-gray-800"} hover:text-gray-600 focus:outline-none`}
                 >
-                    {<Bars3BottomRightIcon className="h-6 w-6 text-gray-900 dark:text-gray-100" />}
+                    {<Bars3BottomRightIcon className={`h-7 w-7 ${isDarkMode ? "text-white" : "text-gray-900"}`}/>}
                 </button>
             </div>
 
             {/* Dropdown Menu (Visible on Mobile) */}
             {isOpen && (
-                <div className="absolute top-0 left-0 right-0 bg-white dark:bg-gray-800 shadow-lg md:hidden">
+                <div className={`absolute top-0 left-0 right-0 ${isDarkMode ? "bg-gray-800" : "bg-white"} shadow-lg md:hidden`}>
 
                     <ul className="flex flex-col items-center space-y-4 py-4">
                         <button
                             onClick={toggleMenu}
-                            className="text-gray-800 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 focus:outline-none font-medium">
-                            {<XMarkIcon className="h-6 w-6 text-gray-900 dark:text-gray-100" />}
+                            className={`${isDarkMode ? "text-white" : "text-gray-800"} hover:text-gray-600 focus:outline-none`}>
+                            {<XMarkIcon className={`h-7 w-7 ${isDarkMode ? "text-white" : "text-gray-800"}`}/>}
                         </button>
                         <li>
-                            <a href="#about" className="text-gray-800 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 font-medium">
+                            <a href="#about" className={`${isDarkMode ? "text-white" : "text-gray-800"} hover:text-gray-600`}>
                                 About
                             </a>
                         </li>
                         <li>
-                            <a href="#gallery" className="text-gray-800 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 font-medium">
+                            <a href="#gallery" className={`${isDarkMode ? "text-white" : "text-gray-800"} hover:text-gray-600`}>
                                 Gallery
                             </a>
                         </li>
                         <li>
-                            <a href="#shop" className="text-gray-800 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 font-medium">
+                            <a href="#shop" className={`${isDarkMode ? "text-white" : "text-gray-800"} hover:text-gray-600`}>
                                 Shop
                             </a>
                         </li>
                         <li>
-                            <a href="#inquiries" className="text-gray-800 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 font-medium">
+                            <a href="#inquiries" className={`${isDarkMode ? "text-white" : "text-gray-800"} hover:text-gray-600`}>
                                 Inquiries
                             </a>
                         </li>
@@ -58,22 +62,22 @@ const Navbar: React.FC = () => {
             {/* Centered Navbar (Visible on Desktop) */}
             <ul className="hidden md:flex space-x-8">
                 <li>
-                    <a href="#about" className="text-gray-800 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 font-medium">
+                    <a href="#about" className={`${isDarkMode ? "text-white" : "text-gray-800"} hover:text-gray-600`}>
                         About
                     </a>
                 </li>
                 <li>
-                    <a href="#gallery" className="text-gray-800 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 font-medium">
+                    <a href="#gallery" className={`${isDarkMode ? "text-white" : "text-gray-800"} hover:text-gray-600`}>
                         Gallery
                     </a>
                 </li>
                 <li>
-                    <a href="#shop" className="text-gray-800 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 font-medium">
+                    <a href="#shop" className={`${isDarkMode ? "text-white" : "text-gray-800"} hover:text-gray-600`}>
                         Shop
                     </a>
                 </li>
                 <li>
-                    <a href="#inquiries" className="text-gray-800 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 font-medium">
+                    <a href="#inquiries" className={`${isDarkMode ? "text-white" : "text-gray-800"} hover:text-gray-600`}>
                         Inquiries
                     </a>
                 </li>

@@ -5,7 +5,7 @@ import rotator_end from '../assets/rotator_end.webp'
 const HeroSection: React.FC = () => {
 
     return (
-        <div className="flex flex-col items-center justify-center">
+        <div className="flex flex-col items-center justify-center py-10">
             <div className='columns-2 gap-16 place-self-center'>
                 <span>
                     <img src={rotator_cursor} className="logo react" alt="Phsydelic rotator" />

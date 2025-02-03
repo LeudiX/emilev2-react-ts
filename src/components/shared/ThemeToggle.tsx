@@ -2,16 +2,24 @@
 import React, { useEffect, useState } from "react";
 import { SunIcon, MoonIcon } from '@heroicons/react/24/outline';
 
-const ThemeToggle: React.FC = () => {
+// Define the props interface to include an optional `onThemeChange` callback
+interface ThemeToggleProps {
+    onThemeChange?: (isDarkMode: boolean) => void;
+}
+
+
+const ThemeToggle: React.FC<ThemeToggleProps> = ({ onThemeChange }) => {
     const [isDarkMode, setIsDarkMode] = useState(false);
 
     useEffect(() => {
-        if (localStorage.theme === "dark" || (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
-            document.documentElement.classList.add("dark");
-            setIsDarkMode(true);
-        } else {
-            document.documentElement.classList.remove("dark");
+        localStorage.setItem('theme','light');
+        // Check localStorage for theme preference
+        if (localStorage.theme === "light" || (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: light)").matches)) {
+            document.documentElement.classList.add("light");
             setIsDarkMode(false);
+        } else {
+            document.documentElement.classList.remove("light");
+            setIsDarkMode(true);
         }
     }, []);
 
@@ -19,15 +27,19 @@ const ThemeToggle: React.FC = () => {
         if (isDarkMode) {
             document.documentElement.classList.remove("dark");
             document.documentElement.classList.add("light");
-            localStorage.setItem("theme","light");
+            localStorage.theme = 'light';
             console.log("Switched to light mode");
         } else {
             document.documentElement.classList.remove("light");
             document.documentElement.classList.add("dark");
-            localStorage.setItem("theme","dark");
+            localStorage.theme = 'dark';
             console.log("Switched to dark mode");
         }
         setIsDarkMode(!isDarkMode);
+        // Notify parent components about the theme change
+        if (onThemeChange) {
+            onThemeChange(!isDarkMode);
+        }
     };
 
     return (
@@ -35,7 +47,7 @@ const ThemeToggle: React.FC = () => {
             onClick={toggleTheme}
             className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600"
         >
-            {isDarkMode ? <SunIcon className="h-6 w-6 text-yellow-400" /> : <MoonIcon className="h-6 w-6 text-gray-900 dark:text-gray-100"/>}
+            {isDarkMode ? <SunIcon className="h-6 w-6 text-yellow-400" /> : <MoonIcon className="h-6 w-6 text-gray-900 dark:text-gray-100" />}
         </button>
     );
 
