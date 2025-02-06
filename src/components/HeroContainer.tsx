@@ -16,7 +16,7 @@ const HeroContainer: React.FC = () => {
         <div className={`${isDarkMode ? "bg-gray-900 transition-colors duration-300" : "bg-white transition-colors duration-300"}`}>
             <div className="flex items-center justify-between p-4 hover:shadow-md">
                 {/* Logo */}
-                <div className="ml-4">
+                <div className="-ml-2">
                     <ImgLogo
                         imgID="racineLogo"
                         imgSrcLight="/src/assets/images/logo/Racine_Halftone.png" // Path to light mode logo
@@ -29,7 +29,7 @@ const HeroContainer: React.FC = () => {
                 {/* Navbar */}
                 <Navbar isDarkMode={isDarkMode} />
                 {/* Theme Toggle */}
-                <div className="mr-4">
+                <div className="-mr-2">
                     <ThemeToggle onThemeChange={handleThemeChange} />
                 </div>
             </div>

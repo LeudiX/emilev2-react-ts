@@ -5,7 +5,7 @@ import racine_mask from '../assets/images/hero/racine_mask.webp'
 const About:React.FC = () =>{
     return (
         <section className="flex flex-col items-center justify-center py-10">
-             <h4 className="font-allumi font-bold  uppercase mb-8 text-2xl">
+             <h4 className="font-allumi font-bold  uppercase mb-8  text-2xl">
                 Apparel brand <br /> centered at the intersection of <br /> art,consciousness & functionality
             </h4>
             <div className='flex items-center justify-center -space-x-40 md:-space-x-64  lg:-space-x-80'>
