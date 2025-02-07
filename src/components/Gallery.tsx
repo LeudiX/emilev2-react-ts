@@ -1,128 +1,51 @@
-import React, { useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation, Pagination } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
+import React from "react";
+
+import dorian_portrait from '/media/gallery/dorian.png';
+import teezo_portrait from '/media/gallery/teezo.png';
+import mattox_portrait from '/media/gallery/mattox.png';
+import lilnas_portrait from '/media/gallery/lil_nas.png';
+import others_portrait from '/media/gallery/others.png';
+import paper_mag from '/media/gallery/paper_mag.png';
+
 
 const Gallery: React.FC = () => {
 
-    //Projects Dataset
-    const projects = [
-        {
-            title: "Paper Mag",
-            subtitle: "Interview",
-            artists: ["Gollum", "Doriam", "Lil NasX", "Mattox", "Teezo", "Others"],
-            media: [
-                { type: "image", url: "/media/paper_mag/1.jpg" },
-                { type: "image", url: "/media/paper_mag/2.jpg" },
-                { type: "image", url: "/media/paper_mag/3.jpg" },
-                { type: "image", url: "/media/paper_mag/4.jpg" },
-                { type: "image", url: "/media/paper_mag/5.jpg" },
-            ],
-        },
-        {
-            title: "Dorian Electra",
-            subtitle: "My Agenda",
-            artists: ["Dorian"],
-            media: [
-                { type: "image", url: "/media/dorian_electra/1.jpeg" },
-                { type: "video", url: "/media/dorian_electra/dorian_electra_my_agenda_2021.mp4" },
-                { type: "image", url: "/media/dorian_electra/2.jpg" },
-                { type: "image", url: "/media/dorian_electra/3.jpg" },
-            ],
-        },
-        {
-            title: "Lil NasX",
-            subtitle: "Custom Design",
-            artists: ["Lil NasX"],
-            media: [
-                { type: "image", url: "/media/lil_nasx/4.jpg" },
-                { type: "video", url: "/media/lil_nasx/lil_nasx_vitaminwater_2022.mp4" },
-                { type: "image", url: "/media/lil_nasx/5.jpg" },
-                { type: "image", url: "/media/lil_nasx/6.jpg" },
-                { type: "image", url: "/media/lil_nasx/7.jpg" },
-                { type: "image", url: "/media/lil_nasx/8.jpg" },
-            ],
-        }
-    ]
-
-    // State to track the active artist's media (Default with first)
-    const [activeMedia, setActiveMedia] = useState(projects[0].media);
-    const [activeProjectTitle, setActiveProjectTitle] = useState(projects[0].title)
-    const [activeProjectSubtitle, setActiveProjectSubtitle] = useState(projects[0].subtitle)
-
-    // Function to handle artist button clicks
-    const handleArtistMedia = (title: string, subtitle: string, media: { type: string; url: string }[]) => {
-        setActiveMedia(media);
-        setActiveProjectTitle(title);
-        setActiveProjectSubtitle(subtitle);
-    };
+    const portraits =
+        [{ src: dorian_portrait, alt: "Dorian", title: "Dorian Electra" },
+        { src: teezo_portrait, alt: "Teezo", title: "Teezo" },
+        { src: mattox_portrait, alt: "Mattox", title: "Mattox" },
+        { src: lilnas_portrait, alt: "LilNasX", title: "Lil NasX" },
+        { src: others_portrait, alt: "Others", title: "Others" },
+        { src: paper_mag, alt: "Paper Mag", title: "Paper Mag" }]
 
     return (
-        <section className="min-h-screen">
+        <section className="items-center py-5">
             <h4 className="font-allumi font-bold  uppercase mb-2 text-left text-2xl max-w-2xl w-full">
-                {activeProjectTitle} {/*Proyect title*/}
+                Gallery
             </h4>
             {/*Grid Layout*/}
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-x-10">
-
-                <div className="col-span-3">
-                    <h6 className="text-left text-lg font-bold mb-4">
-                        {activeProjectSubtitle} {/*Proyect subtitle*/}
-                    </h6>
-                    <div className="grid grid-cols-3 gap-2 ">
-                        {projects.map((project, index) => (
-                            <button
-                                key={index}
-                                onClick={() => handleArtistMedia(project.title, project.subtitle, project.media)}
-                                className="rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white px-2  py-2 text-sm hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
-                            >
-                                {project.artists[0]} {/*Proyect 1st artist's name*/}
-                            </button>
-                        ))}
+            <div className="grid grid-cols-1 md:grid-cols-12">
+                <div className="col-span-2 hidden md:block">
+                    {/* This column is intentionally left empty */}
+                </div>
+                <div className="col-span-8">
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-1 md:gap-1 overflow-visible">
+                        {
+                            portraits.map((image, index) => (
+                                <div key={index} className="relative overflow-visible">
+                                    <img
+                                        src={image.src}
+                                        alt={image.alt}
+                                        title={image.title}
+                                        className="w-56 h-56 md:w-72 md:h-72 lg:w-96 lg:h-96 object-cover rounded-lg transition-transform duration-300 ease-in-out hover:scale-120 hover:z-10"
+                                    />
+                                </div>
+                            ))
+                        }
                     </div>
                 </div>
-                {/* 2nd Column: Swiper Carousel */}
-                <div className="col-span-6 py-5">
-                    <Swiper
-                        modules={[Autoplay, Navigation, Pagination]}
-                        spaceBetween={30}
-                        slidesPerView={1}
-                        navigation
-                        pagination={{ clickable: true }}
-                        autoplay={{
-                            delay: (activeMedia[0]?.type === "video" ? 10000 : 5000), disableOnInteraction: false
-                        }} // 10s for videos, 5s for images
-                        loop
-                        className="w-full h-full"
-                    >
-                        {activeMedia.map((item, index) => (
-                            <SwiperSlide key={index}>
-                                <div className="flex items-center justify-center h-full">
-                                    {item.type === "image" ? (
-                                        <img
-                                            src={item.url}
-                                            alt={`Slide ${index}`}
-                                            className="object-cover w-full h-full"
-                                            title="Dorian Electra"
-                                        />
-                                    ) : (
-                                        <video
-                                            src={item.url}
-                                            autoPlay
-                                            muted
-                                            loop
-                                            className="object-cover w-full h-full"
-                                        />
-                                    )}
-                                </div>
-                            </SwiperSlide>
-                        ))}
-                    </Swiper>
-                </div>
             </div>
-        </section >
+        </section>
     )
 }
 export default Gallery;
