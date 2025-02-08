@@ -1,5 +1,8 @@
 import React from "react";
 
+import ParallaxContainer from "./shared/ParallaxContainer/ParallaxContainer";
+
+//import images
 import parallax_leafs from '/media/about/parallax_leafs_cloud.png';
 import parallax_arm_blue from '/media/about/parallax_arm_blue.png';
 import parallax_park from '/media/about/parallax_park_cloud.png';
@@ -7,14 +10,34 @@ import xavier_cloud from '/media/about/xavier_cloud.png';
 import arm from '/media/about/arm.png';
 import black_person_cut from '/media/about/black_person_cut.png';
 
-const About: React.FC = () => {
+const parallaxData = [
+    {
+        bgImage: parallax_leafs,
+        fgImage: xavier_cloud,
+        fgSize: "w-48 md:w-64 lg:w-72",
+        text: "Émile Racine is a Montreal-based designer working at the intersection of industrial design, couture and art.",
+        textPosition: "right",
+        fgPosition: "center",
+    },
+    {
+        bgImage: parallax_arm_blue,
+        fgImage: arm,
+        fgSize: "w-96 md:w-96 lg:w-96",
+        text: "This is the second text block, positioned to the left of the arm image.",
+        textPosition: "left",
+        fgPosition: "right",
+    },
+    {
+        bgImage: parallax_park,
+        fgImage: black_person_cut,
+        fgSize: "w-56 md:w-56 lg:w-56",
+        text: "This is the third text block, positioned to the right of the third image.",
+        textPosition: "right",
+        fgPosition: "center",
+    },
+] as const; // ✅ Prevents modifications & enforces literal types (Best for static configs & pre-defined data)
 
-    /*
-    const parallax_items = [
-        { src: parallax_leafs, alt: "Parallax Leafs" },
-        { src: parallax_arm_blue, alt: "Parallax Arm" },
-        { src: parallax_park, alt: "Parallax Park" },
-    ]*/
+const About: React.FC = () => {
 
     return (
         <section className="items-center py-5">
@@ -27,29 +50,10 @@ const About: React.FC = () => {
                     {/* This column is intentionally left empty */}
                 </div>
                 <div className="col-span-10 -space-y-5">
-                    {/* First Container */}
-                    <div className="relative w-full h-96 bg-cover bg-center flex items-center justify-center" style={{ backgroundImage: `url(${parallax_leafs})` }}>
-                        <img src={xavier_cloud} alt="Xavier" className="absolute inset-0 mx-auto w-48 md:w-64 lg:w-72 object-cover" />
-                        <div className="absolute md:right-10 bg-gray-800 opacity-80 text-white p-2 md:p-4 rounded-md shadow-lg w-64">
-                            <p className="text-xs md:text-xs font-medium">This is the first text block, positioned to the right of the first image.</p>
-                        </div>
-                    </div>
-
-                    {/*Second Container*/}
-                    <div className="relative w-full h-96 bg-cover bg-center flex items-center justify-center" style={{ backgroundImage: `url(${parallax_arm_blue})` }}>
-                        <img src={arm} alt="Arm" className="absolute right-0 w-96 md:w-96 lg:w-96 object-cover" />
-                        <div className="absolute  md:left-20 bg-gray-800 opacity-80 text-white p-2 md:p-4 rounded-md shadow-lg w-64">
-                            <p className="text-xs md:text-xs font-medium">This is the second text block, positioned to the left of the arm image.</p>
-                        </div>
-                    </div>
-
-                    {/* Third Container */}
-                    <div className="relative w-full h-96 bg-cover bg-center flex items-center justify-center" style={{ backgroundImage: `url(${parallax_park})` }}>
-                        <img src={black_person_cut} alt="Black Person" className="absolute inset-0 mx-auto w-56 md:w-56 lg:w-56 object-cover" />
-                        <div className="absolute  md:right-25 bg-gray-800 opacity-80 text-white p-2 md:p-4 rounded-md shadow-lg w-64">
-                            <p className="text-xs md:text-xs font-medium">This is the third text block, positioned to the right of the third image.</p>
-                        </div>
-                    </div>
+                    {/* Iteratively Render Containers */}
+                    {parallaxData.map((item, index) => (
+                        <ParallaxContainer key={index} {...item} />
+                    ))}
                 </div>
             </div>
         </section>
