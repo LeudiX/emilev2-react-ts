@@ -30,7 +30,7 @@ const Hero: React.FC = () => {
                 </p>
             </div>
             <div className="mt-5">
-                <button className="mt-4 px-6 py-3 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white  text-sm hover:bg-gray-300 font-medium dark:hover:bg-gray-600 transition-colors">
+                <button className="mt-4 px-6 py-3 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white  text-sm hover:bg-gray-300 font-medium dark:hover:bg-gray-600 cursor-pointer transition-colors">
                     See my CV
                 </button>
             </div>

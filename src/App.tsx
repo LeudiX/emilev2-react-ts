@@ -6,6 +6,7 @@ import About from './components/About'
 import Gallery from './components/Gallery'
 import Carousel from './components/Carousel'
 import ScrollToTop from './components/shared/ScrollToTop'
+import Footer from './components/Footer'
 
 
 function App() {
@@ -17,10 +18,7 @@ function App() {
       <Gallery/>
       <Carousel/>
       <About/>
-      <footer className="p-3 text-center font-medium">
-        <h6 className="mb-3">Émile Racine</h6>
-        <p>designbyracine © All CopyRights Reserved 2025</p>
-      </footer>
+      <Footer/>
     </>
   )
 }

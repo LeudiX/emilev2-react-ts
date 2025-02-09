@@ -120,7 +120,7 @@ const Carousel: React.FC = () => {
                             <button
                                 key={index}
                                 onClick={() => handleArtistMedia(project.title, project.subtitle, project.media)}
-                                className="rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white px-2  py-2 text-sm font-medium hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+                                className="rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white px-2  py-2 text-sm font-medium hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors cursor-pointer"
                             >
                                 {project.artists[0]} {/*Proyect 1st artist's name*/}
                             </button>

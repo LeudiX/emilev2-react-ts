@@ -32,7 +32,7 @@ const Gallery: React.FC = () => {
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-1 md:gap-1 overflow-visible">
                         {
                             portraits.map((image, index) => (
-                                <div key={index} className="relative overflow-visible">
+                                <div key={index} className="relative overflow-visible cursor-pointer">
                                     <img
                                         src={image.src}
                                         alt={image.alt}
