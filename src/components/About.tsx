@@ -45,7 +45,7 @@ const parallaxData = [
 const About: React.FC = () => {
 
     return (
-        <section className="items-center py-5">
+        <section id="about" className="items-center py-5">
             <h4 className="font-allumi font-bold  uppercase mb-2 text-left text-2xl max-w-2xl w-full">
                 About
             </h4>

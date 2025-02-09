@@ -7,7 +7,7 @@ import racine_mask from '../assets/images/hero/racine_mask.webp'
 const Hero: React.FC = () => {
 
     return (
-        <section className="flex flex-col items-center py-5">
+        <section id="hero" className="flex flex-col items-center py-5">
             <h4 className="font-allumi font-bold  uppercase mb-8 text-left text-2xl max-w-2xl w-full">
                 Apparel brand <br /> centered at the intersection of <br /> art, consciousness & functionality
             </h4>
@@ -30,7 +30,7 @@ const Hero: React.FC = () => {
                 </p>
             </div>
             <div className="mt-5">
-                <button id='btn-hero' className="mt-4 px-6 py-2 font-kanit text-lg bg-primary text-secondary border border-secondary rounded-lg">
+                <button className="mt-4 px-6 py-3 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white  text-sm hover:bg-gray-300 font-medium dark:hover:bg-gray-600 transition-colors">
                     See my CV
                 </button>
             </div>

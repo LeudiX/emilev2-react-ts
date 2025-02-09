@@ -10,19 +10,37 @@
 }
 
 html {
-  @apply bg-white text-gray-900 
+  @apply bg-white text-gray-900
 }
 
-html.light{
+html.light {
   @apply transition-colors duration-300 bg-white text-gray-900;
 }
 
 html.dark {
-  @apply transition-colors duration-300  dark:bg-gray-900 dark:text-white;
+  @apply transition-colors duration-300 dark:bg-gray-900 dark:text-white;
+}
+
+/*Hide scrollbar but keep scrolling smoothly*/
+
+/* Hide scrollbar */
+html {
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+body::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari */
+}
+
+/* Enable smooth scrolling */
+html {
+  scroll-behavior: smooth;
 }
 
 :root {
-  
+
   line-height: 1.5;
   font-weight: 400;
   color-scheme: light dark;
@@ -42,38 +60,4 @@ body {
 h1 {
   font-size: 3.2em;
   line-height: 1.5;
-}
-
-button#btn-hero {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #364153;
-  cursor: pointer;
-  transition: border-color 0.25s;
-  color: #ffffff;
-}
-
-button#btn-hero:hover {
-  border-color: #213547;
-}
-
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-
-  a:hover {
-    color: #4b7cef;
-  }
-
 }

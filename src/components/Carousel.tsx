@@ -101,7 +101,7 @@ const Carousel: React.FC = () => {
     };
 
     return (
-        <section className="items-center py-5">
+        <section id="carousel" className="items-center py-5">
             {/* Inject custom Swiper styles */}
             <style>{swiperStyles}</style>
 
@@ -120,7 +120,7 @@ const Carousel: React.FC = () => {
                             <button
                                 key={index}
                                 onClick={() => handleArtistMedia(project.title, project.subtitle, project.media)}
-                                className="rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white px-2  py-2 text-sm hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+                                className="rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white px-2  py-2 text-sm font-medium hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
                             >
                                 {project.artists[0]} {/*Proyect 1st artist's name*/}
                             </button>

@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import { Link } from "react-scroll";
 import { Bars3BottomRightIcon, XMarkIcon } from "@heroicons/react/24/outline"
+
 
 interface NavbarProps {
     isDarkMode: boolean;
@@ -35,25 +37,31 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode }) => {
                             className={`${isDarkMode ? "text-white" : "text-gray-800"} hover:text-gray-600 focus:outline-none`}>
                             {<XMarkIcon className={`h-7 w-7 ${isDarkMode ? "text-white" : "text-gray-800"}`} />}
                         </button>
+                        {/* Internal Links - React Scroll */}
                         <li>
-                            <a href="#about" className={`${isDarkMode ? "text-white" : "text-gray-800"} font-medium hover:text-gray-600`}>
-                                About
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#gallery" className={`${isDarkMode ? "text-white" : "text-gray-800"} font-medium hover:text-gray-600`}>
-                                Gallery
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#shop" className={`${isDarkMode ? "text-white" : "text-gray-800"} font-medium hover:text-gray-600`}>
+                            <a href="https://apocene.com/racine" target="_blank" rel="noopener noreferrer" className={`${isDarkMode ? "text-white" : "text-gray-800"} font-medium hover:text-gray-600`}>
                                 Shop
                             </a>
                         </li>
                         <li>
-                            <a href="#inquiries" className={`${isDarkMode ? "text-white" : "text-gray-800"} font-medium hover:text-gray-600`}>
+                            <Link to="gallery" smooth={true} duration={500} className={`${isDarkMode ? "text-white" : "text-gray-800"} font-medium hover:text-gray-600`}>
+                                Gallery
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="carousel" smooth={true} duration={500} className={`${isDarkMode ? "text-white" : "text-gray-800"} font-medium hover:text-gray-600`}>
+                                Carousel
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="about" smooth={true} duration={500} className={`${isDarkMode ? "text-white" : "text-gray-800"} font-medium hover:text-gray-600`}>
+                                About
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="inquiries" smooth={true} duration={500} className={`${isDarkMode ? "text-white" : "text-gray-800"} font-medium hover:text-gray-600`}>
                                 Inquiries
-                            </a>
+                            </Link>
                         </li>
                     </ul>
                 </div>
@@ -61,25 +69,31 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode }) => {
 
             {/* Centered Navbar (Visible on Desktop) */}
             <ul className="hidden md:flex space-x-8">
+                {/* Internal Links - React Scroll */}
                 <li>
-                    <a href="#about" className={`${isDarkMode ? "text-white" : "text-gray-800"} font-bold hover:text-gray-600`}>
-                        About
-                    </a>
-                </li>
-                <li>
-                    <a href="#gallery" className={`${isDarkMode ? "text-white" : "text-gray-800"} font-bold hover:text-gray-600`}>
-                        Gallery
-                    </a>
-                </li>
-                <li>
-                    <a href="#shop" className={`${isDarkMode ? "text-white" : "text-gray-800"} font-bold hover:text-gray-600`}>
+                    <a href="https://apocene.com/racine" target="_blank" rel="noopener noreferrer" className={`${isDarkMode ? "text-white" : "text-gray-800"} font-bold hover:text-gray-600`}>
                         Shop
                     </a>
                 </li>
                 <li>
-                    <a href="#inquiries" className={`${isDarkMode ? "text-white" : "text-gray-800"} font-bold hover:text-gray-600`}>
+                    <Link to="gallery" smooth={true} duration={500} className={`${isDarkMode ? "text-white" : "text-gray-800"} cursor-pointer font-bold hover:text-gray-600`}>
+                        Gallery
+                    </Link>
+                </li>
+                <li>
+                    <Link to="carousel" smooth={true} duration={500} className={`${isDarkMode ? "text-white" : "text-gray-800"} cursor-pointer font-bold hover:text-gray-600`}>
+                        Carousel
+                    </Link>
+                </li>
+                <li>
+                    <Link to="about" smooth={true} duration={500} className={`${isDarkMode ? "text-white" : "text-gray-800"} cursor-pointer font-bold hover:text-gray-600`}>
+                        About
+                    </Link>
+                </li>
+                <li>
+                    <Link to="inquiries" smooth={true} duration={500} className={`${isDarkMode ? "text-white" : "text-gray-800"} cursor-pointer font-bold hover:text-gray-600`}>
                         Inquiries
-                    </a>
+                    </Link>
                 </li>
             </ul>
         </nav>

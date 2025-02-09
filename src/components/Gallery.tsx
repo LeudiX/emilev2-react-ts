@@ -19,7 +19,7 @@ const Gallery: React.FC = () => {
         { src: paper_mag, alt: "Paper Mag", title: "Paper Mag" }]
 
     return (
-        <section className="items-center py-5">
+        <section id="gallery" className="items-center py-5">
             <h4 className="font-allumi font-bold  uppercase mb-2 text-left text-2xl max-w-2xl w-full">
                 Gallery
             </h4>
