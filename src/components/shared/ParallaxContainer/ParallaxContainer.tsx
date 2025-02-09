@@ -5,7 +5,9 @@ const ParallaxContainer: React.FC<iParallaxContainerProps> = ({
     bgImage,
     fgImage,
     fgSize,
+    width,
     text,
+    text2,
     textPosition,
     fgPosition = "center",
 }) => {
@@ -25,9 +27,17 @@ const ParallaxContainer: React.FC<iParallaxContainerProps> = ({
             {/* Text Box */}
             <div
                 className={`absolute ${textPosition === "right" ? "md:right-10" : "md:left-20"
-                    } bg-gray-800 opacity-80 text-white text-left p-2 md:p-3 rounded-md shadow-lg w-96`}
+                    } bg-gray-800 opacity-80 text-white text-justify p-2 md:p-3 rounded-md shadow-lg ${width}`}
             >
-                <p className="text-xs md:text-xs font-medium">{text}</p>
+                <p className="text-xs md:text-xs font-medium">
+                    {text}
+                    {text2 && (
+                        <>
+                            <br />
+                            <br />
+                            {text2}
+                        </>
+                    )}</p>
             </div>
         </div>
     );
